@@ -1,52 +1,27 @@
 import { useContext } from 'react'
 import LangContext from '../store/lang-context'
 
-// interface ContextKeys {
-//   [key: string]: string |{}
-// }
-
-interface ContextSecion {
-  [prop: string]: {}
-}
-
-interface ContextProps extends ContextSecion {
-  pl: {
-    attention: Attention
-    newsletter: Newsletter
-  }
+interface contextData extends AttentionContent {
+  pl: AttentionData
+  en: AttentionData
   active: string
+  langChangeHandler: (lang: string) => void
 }
 
-type Attention = {
-  title: string
-  subtitle: string
-  ctaButton: string
+interface AttentionData extends AttentionContent {
+  attention: AttentionContent
 }
 
-type Newsletter = {
-  title: string
-  ctaButton: string
-  action: string
-}
-
-interface ContentValues {
-  [props: string]: {}
-}
-
-interface Content {
-  attention: {
-    title: string
-    ctaButton: string
-    subtitle: string
-  }
+interface AttentionContent {
+  [key: string]: string | {}
 }
 
 const AttentionSection = ({ sectionName = 'attention' }) => {
-  const ctx: ContextProps = useContext(LangContext)
+  const ctx: contextData = useContext(LangContext)
   // texts brane z LangContex
   const lang = ctx.active
-  const section: Content = ctx[lang]
-  console.log('from section', ctx.pl)
+  const section = ctx[lang]
+  console.log('secion data', section)
   const { title, subtitle, ctaButton } = section[sectionName]
   return (
     <div>
