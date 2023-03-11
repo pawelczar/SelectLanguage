@@ -1,7 +1,5 @@
 import useConetent from "../hooks/use-Content"
 
-
-
 const NewsletterSection = ({ sectionName = 'newsletter' }) => {
   const content = useConetent(sectionName)
   return (
