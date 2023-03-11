@@ -1,6 +1,5 @@
-import { useContext } from 'react'
-import LangContext from '../store/lang-context'
-
+// import { useContext } from 'react'
+import useConetent from "../hooks/use-Content"
 // interface contextData extends DataIndex {
 //   pl: AttentionData
 //   en: AttentionData
@@ -21,16 +20,17 @@ import LangContext from '../store/lang-context'
 // }
 
 const AttentionSection = ({ sectionName = 'attention' }) => {
-  const ctx= useContext(LangContext)
-  const lang = ctx.active
-  const section = ctx[lang][sectionName]
-  console.log("section data", section)
-  const { title, subtitle, ctaButton }:{title:string, subtitle:string, ctaButton:string} = section //ZAPYTAC O TO!!!
+  // const ctx= useContext(LangContext)
+  // const lang = ctx.active
+  // const section = ctx[lang][sectionName]
+  // console.log("section data", section)
+  // const { title, subtitle, ctaButton }:{title:string, subtitle:string, ctaButton:string} = section //ZAPYTAC O TO!!!
+  const content = useConetent(sectionName)
   return (
     <div>
-      <h1>{title}</h1>
-      <h2>{subtitle}</h2>
-      <button>{ctaButton}</button>
+      <h1>{content.title}</h1>
+      <h2>{content.subtitle}</h2>
+      <button>{content.ctaButton}</button>
     </div>
   )
 }

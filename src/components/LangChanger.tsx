@@ -1,4 +1,4 @@
-import { useContext, ReactNode } from 'react'
+import { useContext } from 'react'
 import LangContext from '../store/lang-context'
 
 const LangChanger = () => {
@@ -17,7 +17,6 @@ const LangChanger = () => {
         >
           <img src="https://img.icons8.com/color/48/null/poland-circular.png" />
         </button>
-        {console.log(ctx.active)}
       </>
     </div>
   )

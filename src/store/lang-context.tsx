@@ -1,4 +1,4 @@
-import { Children, createContext, ReactChild, ReactNode, useState } from 'react'
+import { Children, createContext, ReactNode, useState } from 'react'
 import { pl, en } from '../assets/data'
 
 interface childrenProp {
