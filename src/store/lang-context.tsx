@@ -1,11 +1,6 @@
 import { Children, createContext, ReactChild, ReactNode, useState } from 'react'
 import { pl, en } from '../assets/data'
 
-const lang = {
-  pl,
-  en,
-}
-
 interface childrenProp {
   children: ReactNode
 }
