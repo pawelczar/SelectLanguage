@@ -1,31 +1,65 @@
 import { useContext } from 'react'
 import LangContext from '../store/lang-context'
 
-// interface contextData extends DataIndex {
-//   pl: AttentionData
-//   en: AttentionData
-//   active: string
-//   langChangeHandler: (lang: string) => void
-// }
-
-// type AttentionData = {
+// const dataObject = {
+// pl:{
 //   attention: {
-//     title: string
-//     subtitle: string
-//     ctaButton: string
-//   }
+//     title: 'Dobrze, że jesteś, sprawdź to zadanie',
+//     subtitle: 'Pomoże Ci ogarnąć jak zmieniać język w apkach reacta',
+//     ctaButton: 'Dowiedź się więcej',
+// },
+// newsletter: {
+//   title: 'Bądź na bieżąco',
+//   ctaButton: 'Idź do repo ->',
+//   action: '/new-subscriber?lang=pl',
+// },
+//   },
+// en :{
+//   attention: {
+//     title: 'Hey, check this task',
+//     subtitle: 'It can help You to learn how to change language in react app',
+//     ctaButton: 'More',
+// },
+//   newsletter: {
+//     title: "Let's keep in touch",
+//     ctaButton: 'To repository !!!',
+//     action: '/new-subscriber?lang=en',
+// },
+//   },
+// active: "pl",
+
 // }
 
-// interface DataIndex {
-//   [key: string]: {}
-// }
+
+interface contextData{
+  pl: AttentionData
+  en: AttentionData
+  active: string
+}
+
+interface AttentionData{
+  attention: ContentIndex
+  newsletter: ContentIndex
+
+}
+
+type DataIndex = {
+  [key: string]: string | {} 
+}
+
+type ContentIndex = {
+  [key: string]: string ;
+}
+
+type ContentData = Record<'title'| 'subtitle'| 'ctaButton', string>
+
 
 const AttentionSection = ({ sectionName = 'attention' }) => {
-  const ctx= useContext(LangContext)
+  const ctx:contextData = useContext(LangContext)
   const lang = ctx.active
-  const section = ctx[lang][sectionName]
+  const section: ContentData = ctx[lang][sectionName]
   console.log("section data", section)
-  const { title, subtitle, ctaButton }:{title:string, subtitle:string, ctaButton:string} = section //ZAPYTAC O TO!!!
+  const { title, subtitle, ctaButton } = section //ZAPYTAC O TO!!!
   return (
     <div>
       <h1>{title}</h1>

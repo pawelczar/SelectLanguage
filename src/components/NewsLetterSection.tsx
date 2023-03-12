@@ -7,7 +7,6 @@ const NewsletterSection = ({ sectionName = 'newsletter' }) => {
   const ctx= useContext(LangContext)
   const lang = ctx.active
   const section = ctx[lang][sectionName]
-  console.log('secion data', section)
   const { title, subtitle, ctaButton }:{title:string, subtitle:string, ctaButton:string} = section 
   return (
     <div>
